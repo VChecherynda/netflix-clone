@@ -7,7 +7,7 @@ import Sidedrawer from '../../components/Navigation/Sidedrawer/Sidedrawer';
 const layout = (props) => (
     <Aux>
         <Toolbar />
-        <Sidedrawer />
+        {/* <Sidedrawer /> */}
         <main>
             {props.children}
         </main>

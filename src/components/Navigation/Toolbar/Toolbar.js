@@ -1,12 +1,12 @@
 import React from 'react';
 
-import classes from './Toolbar.module.scss';
-
 import NavigationItems from '../NavigationItems/NavigationItems';
+
+import classes from './Toolbar.module.scss';
 
 const toolbar = (props) => (
     <div className={classes.Toolbar}>
-       <div>Log</div>
+       <a href="/" className={classes.Logo}>Logo</a>
        <nav>
             <NavigationItems />
        </nav>

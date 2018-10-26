@@ -7,9 +7,10 @@ import classes from './App.module.scss';
 class App extends Component {
   render() {
     return (
-      <div className={classes.App}>
-        dasdsad
-        <Layout />
+      <div>
+        <Layout>
+          Site for learning purpose
+        </Layout>
       </div>
     );
   }
