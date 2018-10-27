@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import classes from './Modal.scss';
-import Aux from '../../../hoc/Aux/Aux';
+import classes from './Modal.module.scss';
 import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component  {
   render() {
     return (
-      <Aux>
+      <React.Fragment>
         <Backdrop show={this.props.show} clicked={this.props.modalCLosed}/>
         <div
           className={classes.Modal}
@@ -17,7 +16,7 @@ class Modal extends Component  {
           }}>
           {this.props.children}
         </div>
-      </Aux> 
+      </React.Fragment>
     );
   }
 }

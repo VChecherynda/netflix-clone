@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
+import SignIn from './components/SignIn/SignIn';
 
 import classes from './App.module.scss';
 
@@ -9,7 +11,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          Site for learning purpose
+          <SignIn />
         </Layout>
       </div>
     );
