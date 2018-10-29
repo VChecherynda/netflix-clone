@@ -1,4 +1,5 @@
 .SignIn {
+    
   &__title {
     color: #ffffff;
   }
@@ -16,6 +17,23 @@
       &:hover {
         color: #ffffff;
       }
+    }
+  }
+}
+
+.SignUpLink {
+  margin-top: 16px;
+  span {
+    color: #737373;
+    font-size: 16px;
+  }
+
+  .Link {
+    color: #ffffff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

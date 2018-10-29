@@ -87,8 +87,8 @@ class SignIn extends Component {
 
     return (
       <Modal show={true}>
-        <h1 className={classes.SignIn__title}>Sign In</h1>
         <form className={classes.SignIn} onSubmit={this.signInHandler}>
+          <h1 className={classes.SignIn__title}>Sign In</h1>
           {formElementsArray.map(formElement => (
             <Input 
               key={formElement.id}
@@ -115,6 +115,11 @@ class SignIn extends Component {
             Sign In
           </Button>
         </form>
+
+        <div className={classes.SignUpLink}>
+          <span>New to Netflix? </span>
+          <a className={classes.Link} href="">Sign up now.</a>
+        </div>
       </Modal>
     );
   }
