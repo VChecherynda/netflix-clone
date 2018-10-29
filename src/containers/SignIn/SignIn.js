@@ -30,7 +30,7 @@ class SignIn extends Component {
         label: 'Password',
         elementType: 'input',
         elementConfig: {
-            type: 'text',
+            type: 'password',
             placeholder: 'Password'
         },
         value: '',
@@ -38,6 +38,19 @@ class SignIn extends Component {
             required: true
         },
         valid: false,
+        touched: false
+      },
+      remeber: {
+        label: 'Remember me?',
+        labelPostion: 'bottom',
+        elementClassName: 'Checkbox',
+        elementConfig: {
+          type: 'checkbox',
+        },
+        value: '',
+        validation: {
+            required: false
+        },
         touched: false
       }
     }
@@ -75,11 +88,13 @@ class SignIn extends Component {
     return (
       <Modal show={true}>
         <h1 className={classes.SignIn__title}>Sign In</h1>
-        <form onSubmit={this.signInHandler}>
+        <form className={classes.SignIn} onSubmit={this.signInHandler}>
           {formElementsArray.map(formElement => (
             <Input 
               key={formElement.id}
               label={formElement.config.label}
+              labelPosition={formElement.config.labelPostion}
+              elementClassName={formElement.config.elementClassName}
               elementType={formElement.config.elementType}
               elementConfig={formElement.config.elementConfig}
               value={formElement.config.value}
@@ -89,6 +104,11 @@ class SignIn extends Component {
               changed={(event) => this.inputChangedHandler(event, formElement.id)}
             />
           ))}
+
+          <div className={classes.RestorePassword}>
+            <a className={classes.Link} href="">Need Help?</a>
+          </div>
+
           <Button
             btnType="Danger"
           >

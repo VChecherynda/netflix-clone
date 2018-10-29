@@ -4,6 +4,7 @@ import classes from './Input.module.scss';
 
 const input = (props) => {
   let inputElement = null;
+  const elementClass = props.elementClassName || null ;
   const inputClasses = [classes.InputElement];
 
   if(props.invalid && props.shouldValidate && props.touched) {
@@ -48,12 +49,23 @@ const input = (props) => {
         onChange={props.changed} />;
   }
 
-  return (
-    <div className={classes.Input}>
+  let input = (
+    <div className={`${classes.Input} ${classes[elementClass]}`}>
       <label className={classes.Label}>{props.label}</label>
       {inputElement}
     </div>
-  )
+  );
+
+  if(props.labelPosition === 'bottom') {
+    input = (
+      <div className={`${classes.Input} ${classes[elementClass]}`}>
+        {inputElement}
+        <label className={classes.Label}>{props.label}</label>
+      </div>
+    )
+  }
+
+  return input;
 }
 
 export default input;
