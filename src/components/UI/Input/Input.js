@@ -1,10 +1,10 @@
 import React from 'react';
 
-import classes from './Input.scss';
+import classes from './Input.module.scss';
 
 const input = (props) => {
   let inputElement = null;
-  const inputClasses = [classes.inputElement];
+  const inputClasses = [classes.InputElement];
 
   if(props.invalid && props.shouldValidate && props.touched) {
     inputClasses.push(classes.Invalid);
@@ -13,7 +13,7 @@ const input = (props) => {
   switch( props.elementType) {
     case('input'):
       inputElement = <input 
-        classname={inputClasses.join(' ')}
+        className={inputClasses.join(' ')}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed}
@@ -21,7 +21,7 @@ const input = (props) => {
       break;
     case('textarea'):
       inputElement = <textarea 
-        classname={inputClasses.join(' ')}
+        className={inputClasses.join(' ')}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed}
@@ -29,7 +29,7 @@ const input = (props) => {
       break;
     case('select'):
       inputElement = (<select 
-        classname={inputClasses.join(' ')}
+        className={inputClasses.join(' ')}
         value={props.value}
         onChange={props.changed}
       >
