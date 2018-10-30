@@ -3,19 +3,27 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
 import SignIn from './containers/SignIn/SignIn';
-
-import classes from './App.module.scss';
+import SignUp from './containers/SignUp/SignUp';
 
 class App extends Component {
-  render() {
+  render() { 
+
+    let routes = (
+      <Switch>
+        <Route path='/sign-in' component={SignIn}/>
+        <Route path='/sign-up' component={SignUp}/>
+        <Route path='/' exact component={() => <h1>Main page</h1>} />
+      </Switch>
+    );
+
     return (
       <div>
         <Layout>
-          <SignIn />
-        </Layout>
+          {routes}
+        </Layout> 
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App)  ;

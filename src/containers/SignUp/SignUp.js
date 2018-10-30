@@ -4,7 +4,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 
-import classes from './SignIn.module.scss';
+import classes from './SignUp.module.scss';
 
 import { updateObject, checkValidity } from '../../shared/utility';
 
@@ -118,11 +118,6 @@ class SignIn extends Component {
             Continue
           </Button>
         </form>
-
-        <div className={classes.SignUpLink}>
-          <span>New to Netflix? </span>
-          <a className={classes.Link} href="">Sign up now.</a>
-        </div>
       </Modal>
     );
   }

@@ -4,6 +4,8 @@ import Modal from '../../components/UI/Modal/Modal';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 
+import { NavLink } from 'react-router-dom';
+
 import classes from './SignIn.module.scss';
 
 import { updateObject, checkValidity } from '../../shared/utility';
@@ -118,7 +120,14 @@ class SignIn extends Component {
 
         <div className={classes.SignUpLink}>
           <span>New to Netflix? </span>
-          <a className={classes.Link} href="">Sign up now.</a>
+          <NavLink
+              to='/sign-up'
+              exact
+              className={classes.Link}
+              activeClassName={classes.active}
+            >
+              Sign Up
+            </NavLink>
         </div>
       </Modal>
     );
