@@ -14,20 +14,27 @@ const authStart = ( state, action ) => {
 
 
 const authSuccess = (state, action) => {
-  return  {...state, 
-      token: action.idToken,
-      userId: action.userId,
-      error: null,
-      loading: false
+  return  {...state,
+    token: action.idToken,
+    userId: action.userId,
+    error: null,
+    loading: false
+   };
+};
+
+const authFail = (state, error) => {
+  return  {...state,
+    error: error,
    };
 };
 
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
-      case actionTypes.AUTH_START: return authStart(state, action);
-      case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
-      default:
-          return state;
+    case actionTypes.AUTH_START: return authStart(state, action);
+    case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
+    case actionTypes.AUTH_SUCCESS: return authFail(state, action);
+    default:
+      return state;
   }
 };
 
