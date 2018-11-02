@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter } from 'react-router-dom';
 
-import authReducer from './store/redux/auth';
+import authReducer from './store/reducers/auth';
 import { watchAuth } from './store/sagas';
 
 import App from './App';

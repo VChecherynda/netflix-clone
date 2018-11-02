@@ -4,10 +4,10 @@ import {
   authUserSaga
 } from './auth';
 
-import * as acttionTypes from '../actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 
 export function* watchAuth() {
   yield all([
-    takeEvery(acttionTypes.AUTH_USER, authUserSaga)
+    takeEvery(actionTypes.AUTH_USER, authUserSaga)
   ])
 }

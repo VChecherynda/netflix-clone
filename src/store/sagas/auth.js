@@ -16,8 +16,8 @@ export function* authUserSaga(action) {
   let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDHSxxpi35OZMVjeusn4vkRIf4L3tAoHpA';
   try {
     const response = yield axios.post(url, authData);
-    yield put(actions.authSuccess);
-  } catch {
-    yield put(actions.authFail);
+    yield put(actions.authSuccess(response));
+  } catch(error) {
+    yield put(actions.authFail(error.response.data.error));
   }
 }

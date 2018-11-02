@@ -6,7 +6,7 @@ import SignIn from './containers/SignIn/SignIn';
 import SignUp from './containers/SignUp/SignUp';
 
 class App extends Component {
-  render() { 
+  render() {
 
     let routes = (
       <Switch>
@@ -20,7 +20,7 @@ class App extends Component {
       <div>
         <Layout>
           {routes}
-        </Layout> 
+        </Layout>
       </div>
     );
   }

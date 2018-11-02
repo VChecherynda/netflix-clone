@@ -1,8 +1,8 @@
 import * as actionTypes from './actionTypes';
 
-export const auth = (email,) => {
+export const auth = () => {
   return {
-    type: actionTypes.AUTH_SIGNIN_START
+    type: actionTypes.AUTH_USER
   };
 };
 
