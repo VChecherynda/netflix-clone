@@ -1,10 +1,12 @@
-import { takeEvery, all, takeLatest } from 'redux-saga';
+import { takeEvery, all } from 'redux-saga/effects';
 
 import {
   authUserSaga
 } from './auth';
 
-export function* wathAuth() {
+import * as acttionTypes from '../actions/actionTypes';
+
+export function* watchAuth() {
   yield all([
     takeEvery(acttionTypes.AUTH_USER, authUserSaga)
   ])

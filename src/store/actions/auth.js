@@ -6,6 +6,12 @@ export const auth = (email,) => {
   };
 };
 
+export const authStart = () => {
+  return {
+    type: actionTypes.AUTH_START,
+  };
+};
+
 export const authSuccess = (token, userId) => {
   return {
     type: actionTypes.AUTH_SIGNIN_SUCCESS,
