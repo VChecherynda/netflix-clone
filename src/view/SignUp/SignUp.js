@@ -12,7 +12,7 @@ import * as actions from '../../store/actions/index';
 
 class SignUp extends Component {
   state = {
-    signInForm: {
+    controls: {
       email: {
         elementType: 'input',
         elementConfig: {
@@ -57,19 +57,17 @@ class SignUp extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    console.log('[signUp]', this.props);
-    debugger;
     this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
   }
 
   inputChangedHandler = (event, inputIdentifier) => {
-    const updatedFormElement = updateObject(this.state.signInForm[inputIdentifier], {
+    const updatedFormElement = updateObject(this.state.controls[inputIdentifier], {
       value: event.target.value,
-      valid: checkValidity(event.target.value, this.state.signInForm[inputIdentifier].validation),
+      valid: checkValidity(event.target.value, this.state.controls[inputIdentifier].validation),
       touched: true
     });
 
-    const updatedSignInForm = updateObject(this.state.signInForm, {
+    const updatedSignInForm = updateObject(this.state.controls, {
       [inputIdentifier]: updatedFormElement
     });
 
@@ -78,16 +76,16 @@ class SignUp extends Component {
     for (let inputIdentifier in updatedSignInForm) {
       formIsValid = updatedSignInForm[inputIdentifier].valid && formIsValid;
     }
-    this.setState({signInForm: updatedSignInForm, formIsValid: formIsValid});
+    this.setState({controls: updatedSignInForm, formIsValid: formIsValid});
   }
 
   render() {
     const formElementsArray = [];
 
-    for(let key in this.state.signInForm) {
+    for(let key in this.state.controls) {
       formElementsArray.push({
         id: key,
-        config: this.state.signInForm[key]
+        config: this.state.controls[key]
       })
     }
 

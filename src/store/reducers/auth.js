@@ -12,7 +12,6 @@ const authStart = ( state, action ) => {
   return {...state, error: null, loading: true };
 };
 
-
 const authSuccess = (state, action) => {
   return  {...state,
     token: action.idToken,
