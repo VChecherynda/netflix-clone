@@ -9,7 +9,10 @@ const initialState = {
 };
 
 const authStart = ( state, action ) => {
-  return {...state, error: null, loading: true };
+  return {...state,
+    error: null,
+    loading: true
+  };
 };
 
 const authSuccess = (state, action) => {

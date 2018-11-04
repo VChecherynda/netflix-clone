@@ -8,7 +8,7 @@ import classes from './SignUp.module.scss';
 
 import { updateObject, checkValidity } from '../../shared/utility';
 
-import * as actions from '../../store/actions/index';
+import * as actions from '../../store/actions';
 
 class SignUp extends Component {
   state = {
@@ -21,7 +21,7 @@ class SignUp extends Component {
         },
         value: '',
         validation: {
-            required: true
+          isEmail: true
         },
         valid: false,
         touched: false
@@ -34,7 +34,7 @@ class SignUp extends Component {
         },
         value: '',
         validation: {
-            required: true
+          minLength: 6
         },
         valid: false,
         touched: false
@@ -50,9 +50,11 @@ class SignUp extends Component {
         validation: {
             required: false
         },
+        valid: true,
         touched: false
       }
-    }
+    },
+    formIsValid: false
   }
 
   submitHandler = (event) => {
@@ -67,16 +69,20 @@ class SignUp extends Component {
       touched: true
     });
 
-    const updatedSignInForm = updateObject(this.state.controls, {
+    const updatedSignUpForm = updateObject(this.state.controls, {
       [inputIdentifier]: updatedFormElement
     });
 
     let formIsValid = true;
 
-    for (let inputIdentifier in updatedSignInForm) {
-      formIsValid = updatedSignInForm[inputIdentifier].valid && formIsValid;
+    for (let inputIdentifier in updatedSignUpForm) {
+      formIsValid = updatedSignUpForm[inputIdentifier].valid && formIsValid;
     }
-    this.setState({controls: updatedSignInForm, formIsValid: formIsValid});
+
+    this.setState({
+      controls: updatedSignUpForm,
+      formIsValid: formIsValid
+    });
   }
 
   render() {
@@ -120,6 +126,7 @@ class SignUp extends Component {
 
           <Button
             btnType="Danger"
+            disabled={!this.state.formIsValid}
           >
             Continuesss
           </Button>
