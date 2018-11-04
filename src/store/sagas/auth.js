@@ -15,12 +15,12 @@ export function* authUserSaga(action) {
   let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDHSxxpi35OZMVjeusn4vkRIf4L3tAoHpA';
 
   if (!action.isSignup) {
-    url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDHSxxpi35OZMVjeusn4vkRIf4L3tAoHpA';
+    url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDHSxxpi35OZMVjeusn4vkRIf4L3tAoHpA';
   }
 
   try {
-    const response = yield axios.post('', authData);
-    // yield put(actions.authSuccess(response));
+    const response = yield axios.post(url, authData);
+    yield put(actions.authSuccess(response.data.idToken, response.data.localId));
     yield localStorage.setItem("token", response.data.idToken);
     yield localStorage.setItem("userId", response.data.localId);
     yield put(

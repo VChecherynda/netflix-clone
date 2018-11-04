@@ -21,7 +21,7 @@ class SignIn extends Component {
         },
         value: '',
         validation: {
-            required: true
+            isEmail: true
         },
         valid: false,
         touched: false
@@ -35,7 +35,7 @@ class SignIn extends Component {
         },
         value: '',
         validation: {
-            required: true
+            minLength: 6
         },
         valid: false,
         touched: false
@@ -49,11 +49,23 @@ class SignIn extends Component {
         },
         value: '',
         validation: {
-            required: false
+            required: true
         },
+        valid: true,
         touched: false
       }
-    }
+    },
+    isSignUp: false,
+    formIsValid: false
+  }
+
+  submitHandler = (event) => {
+    event.preventDefault();
+    this.props.onAuth(
+      this.state.signInForm.email.value,
+      this.state.signInForm.password.value,
+      this.state.isSignUp
+    );
   }
 
   inputChangedHandler = (event, inputIdentifier) => {
@@ -87,7 +99,7 @@ class SignIn extends Component {
 
     return (
       <Modal show={true}>
-        <form className={classes.SignIn} onSubmit={this.signInHandler}>
+        <form className={classes.SignIn} onSubmit={this.submitHandler}>
           <h1 className={classes.SignIn__title}>Sign In</h1>
           {formElementsArray.map(formElement => (
             <Input
@@ -111,6 +123,7 @@ class SignIn extends Component {
 
           <Button
             btnType="Danger"
+            disabled={!this.state.formIsValid}
           >
             Sign In
           </Button>

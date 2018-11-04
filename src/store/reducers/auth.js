@@ -11,7 +11,7 @@ const initialState = {
 const authStart = ( state, action ) => {
   return {...state,
     error: null,
-    loading: true
+    loading: true,
   };
 };
 
