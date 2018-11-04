@@ -14,7 +14,7 @@ export const authStart = () => {
 
 export const authSuccess = (token, userId) => {
   return {
-    type: actionTypes.AUTH_SIGNIN_SUCCESS,
+    type: actionTypes.AUTH_SUCCESS,
     userId: userId,
     token: token
   };
@@ -22,7 +22,7 @@ export const authSuccess = (token, userId) => {
 
 export const authFail = error => {
   return {
-    type: actionTypes.AUTH_SIGNIN_SUCCESS,
+    type: actionTypes.AUTH_FAIL,
     error: error
   };
 };
