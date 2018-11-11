@@ -16,7 +16,6 @@ const resetPasswordStart = (state, action) => {
 }
 
 const resetPasswordSuccess = (state, action) => {
-  console.log('[action]', action)
   return  {...state,
     token: action.idToken,
     userId: action.userId,

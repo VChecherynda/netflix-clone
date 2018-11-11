@@ -20,7 +20,7 @@ class PasswordReset extends React.Component {
         },
         value: '',
         validation: {
-          isPassword: true
+          minLength: 6
         },
         touched: false,
       },
@@ -33,7 +33,7 @@ class PasswordReset extends React.Component {
         },
         value: '',
         validation: {
-          isConfirmPassword: true
+          minLength: 6
         },
         touched: false,
       },
@@ -51,6 +51,7 @@ class PasswordReset extends React.Component {
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedFormElement = updateObject(this.state.resetForm[inputIdentifier], {
       value: event.target.value,
+      valid: checkValidity(event.target.value, this.state.resetForm[inputIdentifier].validation),
       touched: true
     });
 
