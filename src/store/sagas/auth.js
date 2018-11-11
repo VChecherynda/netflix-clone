@@ -20,7 +20,6 @@ export function* authUserSaga(action) {
 
   try {
     const response = yield axios.post(url, authData);
-    yield put(actions.authSuccess(response.data.idToken, response.data.localId));
     yield localStorage.setItem("token", response.data.idToken);
     yield localStorage.setItem("userId", response.data.localId);
     yield put(

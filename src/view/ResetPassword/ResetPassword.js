@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 
-import classes from './SignIn.module.scss';
+import classes from './ResetPassword.module.scss';
 
 import Modal from '../../components/UI/Modal/Modal';
 import Input from '../../components/UI/Input/Input';
@@ -9,11 +8,11 @@ import Button from '../../components/UI/Button/Button';
 
 import { updateObject, checkValidity } from '../../shared/utility';
 
-class SignIn extends Component {
+class PasswordReset extends React.Component {
   state = {
-    signInForm: {
+    resetForm: {
       email: {
-        label: 'Enter email or Phone number',
+        label: 'Enter email',
         elementType: 'input',
         elementConfig: {
             type: 'text',
@@ -25,38 +24,8 @@ class SignIn extends Component {
         },
         valid: false,
         touched: false
-      },
-      password: {
-        label: 'Password',
-        elementType: 'input',
-        elementConfig: {
-            type: 'password',
-            placeholder: 'Password'
-        },
-        value: '',
-        validation: {
-            minLength: 6
-        },
-        valid: false,
-        touched: false
-      },
-      remeber: {
-        label: 'Remember me?',
-        labelPostion: 'bottom',
-        elementClassName: 'Checkbox',
-        elementConfig: {
-          type: 'checkbox',
-        },
-        value: '',
-        validation: {
-            required: true
-        },
-        valid: true,
-        touched: false
       }
-    },
-    isSignUp: false,
-    formIsValid: false
+    }
   }
 
   submitHandler = (event) => {
@@ -69,9 +38,9 @@ class SignIn extends Component {
   }
 
   inputChangedHandler = (event, inputIdentifier) => {
-    const updatedFormElement = updateObject(this.state.signInForm[inputIdentifier], {
+    const updatedFormElement = updateObject(this.state.resetForm[inputIdentifier], {
       value: event.target.value,
-      valid: checkValidity(event.target.value, this.state.signInForm[inputIdentifier].validation),
+      valid: checkValidity(event.target.value, this.state.resetForm[inputIdentifier].validation),
       touched: true
     });
 
@@ -84,23 +53,25 @@ class SignIn extends Component {
     for (let inputIdentifier in updatedSignInForm) {
       formIsValid = updatedSignInForm[inputIdentifier].valid && formIsValid;
     }
-    this.setState({signInForm: updatedSignInForm, formIsValid: formIsValid});
+    this.setState({resetForm: updatedSignInForm, formIsValid: formIsValid});
   }
 
   render() {
+
     const formElementsArray = [];
 
-    for(let key in this.state.signInForm) {
+    for(let key in this.state.resetForm) {
       formElementsArray.push({
         id: key,
-        config: this.state.signInForm[key]
+        config: this.state.resetForm[key]
       })
     }
 
-    return (
+    return(
+
       <Modal show={true}>
-        <form className={classes.SignIn} onSubmit={this.submitHandler}>
-          <h1 className={classes.SignIn__title}>Sign In</h1>
+        <form className={classes.ResetPassword} onSubmit={this.submitHandler}>
+          <h1 className={classes.ResetPassword__title}>Reset password</h1>
           {formElementsArray.map(formElement => (
             <Input
               key={formElement.id}
@@ -116,33 +87,16 @@ class SignIn extends Component {
               changed={(event) => this.inputChangedHandler(event, formElement.id)}
             />
           ))}
-
-          <div className={classes.RestorePassword}>
-            <a className={classes.Link} href="/reset-password">Need Help?</a>
-          </div>
-
           <Button
             btnType="Danger"
             disabled={!this.state.formIsValid}
           >
-            Sign In
+            Reset Password
           </Button>
-        </form>
-
-        <div className={classes.SignUpLink}>
-          <span>New to Netflix? </span>
-          <NavLink
-              to='/sign-up'
-              exact
-              className={classes.Link}
-              activeClassName={classes.active}
-            >
-              Sign Up
-            </NavLink>
-        </div>
+         </form>
       </Modal>
-    );
-  }
+   )
+ }
 }
 
-export default SignIn;
+export default PasswordReset

@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import SignIn from './containers/SignIn/SignIn';
 import SignUp from './containers/SignUp/SignUp';
+import ResetPassword from './containers/ResetPassword/ResetPassword';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
       <Switch>
         <Route path='/sign-in' component={SignIn}/>
         <Route path='/sign-up' component={SignUp}/>
+        <Route path='/reset-password' component={ResetPassword}/>
         <Route path='/' exact component={() => <h1>Main page</h1>} />
       </Switch>
     );
