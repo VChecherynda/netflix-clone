@@ -15,9 +15,10 @@ const resetPasswordStart = (state, action) => {
 }
 
 const resetPasswordSuccess = (state, action) => {
+  console.log('[action]', action)
   return  {...state,
+    email: action.email,
     oobCode: action.oobCode,
-    userId: action.userId,
     error: null,
     loading: false
    };

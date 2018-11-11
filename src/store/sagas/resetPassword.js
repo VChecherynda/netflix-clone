@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import * as actions from '../actions';
 
-export function* authUserSaga(action) {
+export function* resetPasswordSaga(action) {
   yield put(actions.resetPasswordStart());
 
   const resetData = {
@@ -15,12 +15,10 @@ export function* authUserSaga(action) {
 
   try {
     const response = yield axios.post(url, resetData);
-    yield localStorage.setItem("oobCode", response.data.kind);
-    yield localStorage.setItem("email", response.data.email);
     yield put(
-      actions.authSuccess(response.data.oobCode, response.data.email)
+      actions.resetPasswordSuccess(response.data.kind, response.data.email)
     );
   } catch(error) {
-    yield put(actions.authFail(error.response.data.error));
+    yield put(actions.resetPasswordFail(error.response.data.error));
   }
 }

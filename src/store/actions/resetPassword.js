@@ -14,11 +14,11 @@ export const resetPasswordStart = () => {
   };
 };
 
-export const resetPasswordSuccess = (token, userId) => {
+export const resetPasswordSuccess = (oobCode, email) => {
   return {
     type: actionTypes.RESET_PASSWORD_SUCCESS,
-    userId: userId,
-    token: token
+    oobCode: oobCode,
+    email: email,
   };
 };
 

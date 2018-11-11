@@ -7,6 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter } from 'react-router-dom';
 
 import authReducer from './store/reducers/auth';
+import resetReducer from './store/reducers/resetPassword';
 import { watchAuth } from './store/sagas';
 
 import App from './App';
@@ -18,7 +19,8 @@ const composeEnhancers =
     : null || compose;
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  reset: resetReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

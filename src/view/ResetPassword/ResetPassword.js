@@ -23,17 +23,17 @@ class PasswordReset extends React.Component {
             isEmail: true
         },
         valid: false,
-        touched: false
+        touched: false,
+        requestType: 'PASSWORD_RESET',
       }
     }
   }
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(
-      this.state.signInForm.email.value,
-      this.state.signInForm.password.value,
-      this.state.isSignUp
+    this.props.onResetPassword(
+      this.state.resetForm.email.value,
+      this.state.resetForm.email.requestType
     );
   }
 
