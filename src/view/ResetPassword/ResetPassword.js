@@ -44,16 +44,16 @@ class PasswordReset extends React.Component {
       touched: true
     });
 
-    const updatedSignInForm = updateObject(this.state.signInForm, {
+    const updatedForm = updateObject(this.state.signInForm, {
       [inputIdentifier]: updatedFormElement
     });
 
     let formIsValid = true;
 
-    for (let inputIdentifier in updatedSignInForm) {
-      formIsValid = updatedSignInForm[inputIdentifier].valid && formIsValid;
+    for (let inputIdentifier in updatedForm) {
+      formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
     }
-    this.setState({resetForm: updatedSignInForm, formIsValid: formIsValid});
+    this.setState({resetForm: updatedForm, formIsValid: formIsValid});
   }
 
   render() {
