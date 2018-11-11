@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onResetPassword: (email, requestType) => dispatch(actions.reset(email, requestType))
+    onResetPassword: (password) => dispatch(actions.reset(password))
   }
 }
 

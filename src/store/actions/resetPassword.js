@@ -1,24 +1,23 @@
 import * as actionTypes from './actionTypes';
 
-export const reset = (email, requestType) => {
+export const reset = (newPassword) => {
   return {
-    type: actionTypes.RESET_PASSWORD_CODE,
-    requestType: requestType,
-    email: email
+    type: actionTypes.RESET_PASSWORD,
+    newPassword: newPassword
   }
 }
 
 export const resetPasswordStart = () => {
   return {
-    type: actionTypes.RESET_PASSWORD_CODE_START,
+    type: actionTypes.RESET_PASSWORD_START,
   };
 };
 
-export const resetPasswordSuccess = (oobCode, email) => {
+export const resetPasswordSuccess = (userId, token) => {
   return {
-    type: actionTypes.RESET_PASSWORD_CODE_SUCCESS,
-    oobCode: oobCode,
-    email: email,
+    type: actionTypes.RESET_PASSWORD_SUCCESS,
+    userId: userId,
+    token: token
   };
 };
 

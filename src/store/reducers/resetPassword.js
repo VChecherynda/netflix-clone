@@ -1,10 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  email: null,
-  oobCode: null,
+  token: null,
+  userId: null,
   error: null,
   loading: false,
+  authRedirectPath: '/'
 }
 
 const resetPasswordStart = (state, action) => {
@@ -17,8 +18,8 @@ const resetPasswordStart = (state, action) => {
 const resetPasswordSuccess = (state, action) => {
   console.log('[action]', action)
   return  {...state,
-    email: action.email,
-    oobCode: action.oobCode,
+    token: action.idToken,
+    userId: action.userId,
     error: null,
     loading: false
    };

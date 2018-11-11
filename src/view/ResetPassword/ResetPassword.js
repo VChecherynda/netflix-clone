@@ -11,49 +11,56 @@ import { updateObject, checkValidity } from '../../shared/utility';
 class PasswordReset extends React.Component {
   state = {
     resetForm: {
-      email: {
-        label: 'Enter email',
+      password: {
+        label: 'Enter new password',
         elementType: 'input',
         elementConfig: {
-            type: 'text',
-            placeholder: 'Email'
+          type: 'text',
+          placeholder: 'Password'
         },
         value: '',
         validation: {
-            isEmail: true
+          isPassword: true
         },
-        valid: false,
         touched: false,
-        requestType: 'PASSWORD_RESET',
-      }
-    }
+      },
+      confirmPassword: {
+        label: 'Confirm password',
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Password'
+        },
+        value: '',
+        validation: {
+          isConfirmPassword: true
+        },
+        touched: false,
+      },
+    },
+    passwordIsValid: false
   }
 
   submitHandler = (event) => {
     event.preventDefault();
     this.props.onResetPassword(
-      this.state.resetForm.email.value,
-      this.state.resetForm.email.requestType
+      this.state.resetForm.password.value,
     );
   }
 
   inputChangedHandler = (event, inputIdentifier) => {
     const updatedFormElement = updateObject(this.state.resetForm[inputIdentifier], {
       value: event.target.value,
-      valid: checkValidity(event.target.value, this.state.resetForm[inputIdentifier].validation),
       touched: true
     });
 
-    const updatedForm = updateObject(this.state.signInForm, {
+    const updatedForm = updateObject(this.state.resetForm, {
       [inputIdentifier]: updatedFormElement
     });
 
-    let formIsValid = true;
+    let passwordIsValid = updatedForm.password.value === updatedForm.confirmPassword.value;
 
-    for (let inputIdentifier in updatedForm) {
-      formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
-    }
-    this.setState({resetForm: updatedForm, formIsValid: formIsValid});
+    this.setState({resetForm: updatedForm, passwordIsValid: passwordIsValid});
   }
 
   render() {
@@ -89,7 +96,7 @@ class PasswordReset extends React.Component {
           ))}
           <Button
             btnType="Danger"
-            disabled={!this.state.formIsValid}
+            disabled={!this.state.passwordIsValid}
           >
             Reset Password
           </Button>
