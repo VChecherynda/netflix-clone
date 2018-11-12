@@ -5,6 +5,8 @@ import Layout from './hoc/Layout/Layout';
 import SignIn from './containers/SignIn/SignIn';
 import SignUp from './containers/SignUp/SignUp';
 import ResetPassword from './containers/ResetPassword/ResetPassword';
+import Films from './containers/Films/Films';
+
 
 class App extends Component {
   render() {
@@ -14,6 +16,7 @@ class App extends Component {
         <Route path='/sign-in' component={SignIn}/>
         <Route path='/sign-up' component={SignUp}/>
         <Route path='/reset-password' component={ResetPassword}/>
+        <Route path='/films' component={Films} />
         <Route path='/' exact component={() => <h1>Main page</h1>} />
       </Switch>
     );
