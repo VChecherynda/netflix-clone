@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Redirect } from 'react-router-dom';
 
 import classes from './SignIn.module.scss';
 
@@ -96,9 +96,18 @@ class SignIn extends Component {
         config: this.state.signInForm[key]
       })
     }
+    
+    console.log('[sign-in]', this.props)
+
+    let authRedirect = null;
+    if ( this.props.isAuthenticated ) {
+      authRedirect = <Redirect to={this.props.authRedirectPath} />
+    }
 
     return (
-      <Modal show={true}>
+      <div>
+       {authRedirect}
+       <Modal show={true}>
         <form className={classes.SignIn} onSubmit={this.submitHandler}>
           <h1 className={classes.SignIn__title}>Sign In</h1>
           {formElementsArray.map(formElement => (
@@ -140,7 +149,8 @@ class SignIn extends Component {
               Sign Up
             </NavLink>
         </div>
-      </Modal>
+        </Modal>
+      </div>
     );
   }
 }

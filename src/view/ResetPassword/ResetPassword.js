@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Redirect } from 'react-router-dom';
 import classes from './ResetPassword.module.scss';
 
 import Modal from '../../components/UI/Modal/Modal';
@@ -76,7 +76,6 @@ class PasswordReset extends React.Component {
     }
 
     return(
-
       <Modal show={true}>
         <form className={classes.ResetPassword} onSubmit={this.submitHandler}>
           <h1 className={classes.ResetPassword__title}>Reset password</h1>
@@ -102,7 +101,7 @@ class PasswordReset extends React.Component {
             Reset Password
           </Button>
          </form>
-      </Modal>
+      </Modal> 
    )
  }
 }

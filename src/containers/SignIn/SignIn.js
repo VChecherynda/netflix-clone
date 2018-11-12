@@ -7,6 +7,8 @@ import * as actions from '../../store/actions/index';
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.token != null,
+    authRedirectPath: state.auth.authRedirectPath,
     loading: state.auth.loading,
     error: state.auth.error,
   }

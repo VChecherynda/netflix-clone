@@ -16,10 +16,11 @@ export const authStart = () => {
 };
 
 export const authSuccess = (token, userId) => {
+  console.log('[authSuccess]', token)
   return {
     type: actionTypes.AUTH_SUCCESS,
-    userId: userId,
-    token: token
+    token: token,
+    userId: userId
   };
 };
 
