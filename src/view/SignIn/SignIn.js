@@ -96,8 +96,6 @@ class SignIn extends Component {
         config: this.state.signInForm[key]
       })
     }
-    
-    console.log('[sign-in]', this.props)
 
     let authRedirect = null;
     if ( this.props.isAuthenticated ) {

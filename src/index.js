@@ -10,7 +10,7 @@ import authReducer from './store/reducers/auth';
 import resetReducer from './store/reducers/resetPassword';
 import { watchAuth } from './store/sagas';
 
-import App from './App';
+import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers =

@@ -20,9 +20,6 @@ export function* authUserSaga(action) {
 
   try {
     const response = yield axios.post(url, authData);
-
-    console.log('[response]', response);
-
     yield localStorage.setItem("token", response.data.idToken);
     yield localStorage.setItem("userId", response.data.localId);
     yield put(
@@ -33,13 +30,15 @@ export function* authUserSaga(action) {
   }
 }
 
+export function* authLogoutSaga(action) {
+  yield localStorage.removeItem("token");
+  yield localStorage.removeItem("userId");
+  yield put(actions.authLogout());
+}
+
 export function* resetPasswordSaga(action) {
   yield put(actions.resetPasswordStart());
-
   const idToken = yield localStorage.getItem('token');
-
-  console.log(action.newPassword ,idToken)
-
   const resetPasswordData = {
     idToken: idToken,
     password: action.newPassword,
@@ -50,9 +49,6 @@ export function* resetPasswordSaga(action) {
 
   try {
     const response = yield axios.post(url, resetPasswordData);
-
-    console.log('[response]', response);
-
     yield localStorage.setItem("token", response.data.idToken);
     yield localStorage.setItem("userId", response.data.localId);
     yield put(
@@ -60,7 +56,6 @@ export function* resetPasswordSaga(action) {
     );
   } catch(error) {
     console.log('[error]', error.response.data.error);
-
     yield put(actions.authFail(error.response.data.error));
   }
 }

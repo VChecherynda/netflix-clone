@@ -1,7 +1,7 @@
 import React from 'react';
 import Aux from '../Aux/Aux';
 
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+import Toolbar from '../../containers/Toolbar/Toolbar';
 import Sidedrawer from '../../components/Navigation/Sidedrawer/Sidedrawer';
 
 const layout = (props) => (
