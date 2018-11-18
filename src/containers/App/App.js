@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    isDoneNew: () => { console.log('isDoneNew') }
+    isDoneNew: () => { console.log('isDoneNew') },
+    isDoneSecond: () => { console.log('isDoneSecond') }
   }
 }
 
